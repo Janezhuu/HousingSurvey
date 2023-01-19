@@ -1,0 +1,296 @@
+---
+title: "Appendix"
+output: html_document
+---
+
+### The code for the plots present in the result:
+
+```{r ,fig.show ='hide'}
+library(readxl)
+
+island <- read_excel("SeasonallyAdjusted.xlsx" , sheet = "VANCOUVER_ISLAND")
+island <- island[182:194, 1:7]
+
+victoria <- read_excel("SeasonallyAdjusted.xlsx" , sheet = "VICTORIA")
+victoria <- victoria[182:194, 1:7]
+
+lowermainland <- read_excel("SeasonallyAdjusted.xlsx" , sheet = "LOWER_MAINLAND")
+lowermainland <- lowermainland[182:194, 1:7]
+
+greatvancouver <- read_excel("SeasonallyAdjusted.xlsx" , sheet = "GREATER_VANCOUVER")
+greatvancouver <- greatvancouver[182:194, 1:7]
+
+fraservalley <- read_excel("SeasonallyAdjusted.xlsx" , sheet = "FRASER_VALLEY")
+fraservalley <- fraservalley[182:194, 1:7]
+
+chilliwack <- read_excel("SeasonallyAdjusted.xlsx" , sheet = "CHILLIWACK_AND_DISTRICT")
+chilliwack <- chilliwack[182:194, 1:7]
+
+okangan <- read_excel("SeasonallyAdjusted.xlsx" , sheet = "OKANAGAN_VALLEY")
+okangan <- okangan[182:194, 1:7]
+
+
+
+#types = c("Composite","Single_Family","One_Storey","Two_Storey","Townhouse","Apartment")
+types = factor(c("Composite","Single_Family","One_Storey","Two_Storey","Townhouse","Apartment"),
+               levels = c("Composite","Single_Family","One_Storey","Two_Storey","Townhouse","Apartment"))
+
+time = factor(c("2020Feb","2020Mar","2020Apr","2020May","2020Jun","2020Jul","2020Aug","2020Sep","2020Oct","2020Nov","2020Dec","2021Jan","2021Feb"),
+              levels = c("2020Feb","2020Mar","2020Apr","2020May","2020Jun","2020Jul","2020Aug","2020Sep","2020Oct","2020Nov","2020Dec","2021Jan","2021Feb"))
+
+# looking at the hosing price of each property type in each region 
+```
+
+```{r, fig.show = 'hide'}
+# Vancouver island 
+plot(c(1:13), as.numeric(unlist(island[,2])), type = "l",  
+     col = unique(types)[1],
+     main = "The housing prise of different property type in Vancouverr island",
+     xlab = "Month (From 2020Feb to 2021Feb)",
+     ylab = "Hosuing price",
+     ylim = c(240,300))
+lines(c(1:13), as.numeric(unlist(island[,3])),col = unique(types)[2])
+lines(c(1:13), as.numeric(unlist(island[,4])),col = unique(types)[3])
+lines(c(1:13), as.numeric(unlist(island[,5])),col = unique(types)[4])
+lines(c(1:13), as.numeric(unlist(island[,6])),col = unique(types)[5])
+lines(c(1:13), as.numeric(unlist(island[,7])),col = unique(types)[6])
+legend("topleft", fill = unique(types),
+       legend = c(levels(types)),
+       cex=0.4)
+
+```
+
+```{r , fig.show = 'hide'}
+# Victoria 
+plot(c(1:13), as.numeric(unlist(victoria[,2])), type = "l",  
+     col = unique(types)[1],
+     main = "The housing prise of different property type in Victoria",
+     xlab = "Month (From 2020Feb to 2021Feb)",
+     ylab = "Hosuing price",
+     ylim = c(200,255))
+lines(c(1:13), as.numeric(unlist(victoria[,3])),col = unique(types)[2])
+lines(c(1:13), as.numeric(unlist(victoria[,4])),col = unique(types)[3])
+lines(c(1:13), as.numeric(unlist(victoria[,5])),col = unique(types)[4])
+lines(c(1:13), as.numeric(unlist(victoria[,6])),col = unique(types)[5])
+lines(c(1:13), as.numeric(unlist(victoria[,7])),col = unique(types)[6])
+legend("topleft", fill = unique(types),
+       legend = c(levels(types)),
+       cex=0.5)
+```
+
+```{r , fig.show = 'hide'}
+# Lower Land 
+plot(c(1:13), as.numeric(unlist(lowermainland[,2])), type = "l",  
+     col = unique(types)[1],
+     main = "The housing prise of different property type in Lower mainland",
+     xlab = "Month (From 2020Feb to 2021Feb)",
+     ylab = "Hosuing price",
+     ylim = c(230,330))
+lines(c(1:13), as.numeric(unlist(lowermainland[,3])),col = unique(types)[2])
+lines(c(1:13), as.numeric(unlist(lowermainland[,4])),col = unique(types)[3])
+lines(c(1:13), as.numeric(unlist(lowermainland[,5])),col = unique(types)[4])
+lines(c(1:13), as.numeric(unlist(lowermainland[,6])),col = unique(types)[5])
+lines(c(1:13), as.numeric(unlist(lowermainland[,7])),col = unique(types)[6])
+legend("topleft", fill = unique(types),
+       legend = c(levels(types)),
+       cex=0.5)
+```
+
+
+```{r , fig.show = 'hide'}
+
+# Greatvancouver
+plot(c(1:13), as.numeric(unlist(greatvancouver[,2])), type = "l",  
+     col = unique(types)[1],
+     main = "The housing prise of different property type in Great vancouver",
+     xlab = "Month (From 2020Feb to 2021Feb)",
+     ylab = "Hosuing price",
+     ylim = c(240,320))
+lines(c(1:13), as.numeric(unlist(greatvancouver[,3])),col = unique(types)[2])
+lines(c(1:13), as.numeric(unlist(greatvancouver[,4])),col = unique(types)[3])
+lines(c(1:13), as.numeric(unlist(greatvancouver[,5])),col = unique(types)[4])
+lines(c(1:13), as.numeric(unlist(greatvancouver[,6])),col = unique(types)[5])
+lines(c(1:13), as.numeric(unlist(greatvancouver[,7])),col = unique(types)[6])
+legend("topleft", fill = unique(types),
+       legend = c(levels(types)),
+       cex=0.5)
+```
+
+```{r , fig.show = 'hide'}
+# Fraservalley
+plot(c(1:13), as.numeric(unlist(fraservalley[,2])), type = "l",  
+     col = unique(types)[1],
+     main = "The housing prise of different property type in Fraser Valley",
+     xlab = "Month (From 2020Feb to 2021Feb)",
+     ylab = "Hosuing price",
+     ylim = c(240,330))
+lines(c(1:13), as.numeric(unlist(fraservalley[,3])),col = unique(types)[2])
+lines(c(1:13), as.numeric(unlist(fraservalley[,4])),col = unique(types)[3])
+lines(c(1:13), as.numeric(unlist(fraservalley[,5])),col = unique(types)[4])
+lines(c(1:13), as.numeric(unlist(fraservalley[,6])),col = unique(types)[5])
+lines(c(1:13), as.numeric(unlist(fraservalley[,7])),col = unique(types)[6])
+legend("topleft", fill = unique(types),
+       legend = c(levels(types)),
+       cex=0.5)
+```
+
+
+```{r , fig.show = 'hide'}
+# Chilliwack 
+plot(c(1:13), as.numeric(unlist(chilliwack [,2])), type = "l",  
+     col = unique(types)[1],
+     main = "The housing prise of different property type in Chilliwack ",
+     xlab = "Month (From 2020Feb to 2021Feb)",
+     ylab = "Hosuing price",
+     ylim = c(220,300))
+lines(c(1:13), as.numeric(unlist(chilliwack[,3])),col = unique(types)[2])
+lines(c(1:13), as.numeric(unlist(chilliwack[,4])),col = unique(types)[3])
+lines(c(1:13), as.numeric(unlist(chilliwack[,5])),col = unique(types)[4])
+lines(c(1:13), as.numeric(unlist(chilliwack[,6])),col = unique(types)[5])
+lines(c(1:13), as.numeric(unlist(chilliwack[,7])),col = unique(types)[6])
+legend("topleft", fill = unique(types),
+       legend = c(levels(types)),
+       cex=0.5)
+```
+
+
+```{r, fig.show = 'hide'}
+# Vancouver island 
+# Composite 
+plot(c(1:13), as.numeric(unlist(okangan[,2])), type = "l",  
+     col = unique(types)[1],
+     main = "The housing prise of different property type in Okanagan_Vally",
+     xlab = "Month (From 2020Feb to 2021Feb)",
+     ylab = "Hosuing price",
+     ylim = c(180,260))
+lines(c(1:13), as.numeric(unlist(okangan[,3])),col = unique(types)[2])
+lines(c(1:13), as.numeric(unlist(okangan[,4])),col = unique(types)[3])
+lines(c(1:13), as.numeric(unlist(okangan[,5])),col = unique(types)[4])
+lines(c(1:13), as.numeric(unlist(okangan[,6])),col = unique(types)[5])
+lines(c(1:13), as.numeric(unlist(okangan[,7])),col = unique(types)[6])
+legend("topleft", fill = unique(types),
+       legend = c(levels(types)),
+       cex=0.4)
+```
+
+#### the average price , for each area and the  overal average (BC)
+```{r, fig.show = 'hide'}
+types_avg = factor(c("Island","Victoria","Lower_Mainland","Greater_Vancouver","Fraser_Vally","Chilliwack","OKANAGAN_VALLEY"),  levels = c("Island","Victoria","Lower_Mainland","Greater_Vancouver","Fraser_Vally","Chilliwack","OKANAGAN_VALLEY"))
+
+#producing the average accroding to these three region each month
+bc_avg = matrix(data = rep(NA), nrow = 13, ncol = 1)
+for (i in 1:13 ){
+  sum = 0
+  for (j in 2:7){
+    sum = sum + island[i,j] + victoria[i,j] + lowermainland[i,j] + greatvancouver[i,j] + fraservalley[i,j] +  chilliwack[i,j]
+  }
+  bc_avg[i] = sum /36
+}
+#bc_avg
+
+# producing the average housing price each month in the island
+island_avg = matrix(data = rep(NA), nrow = 13, ncol = 1)
+for (i in 1:13 ){
+  sum = 0
+  for (j in 2:7){
+    sum = sum + island[i,j] 
+  }
+  island_avg[i] = sum /6
+}
+#island_avg
+
+# producing the average housing price each month in the victoria
+victoria_avg = matrix(data = rep(NA), nrow = 13, ncol = 1)
+for (i in 1:13 ){
+  sum = 0
+  for (j in 2:7){
+    sum = sum + victoria[i,j] 
+  }
+  victoria_avg[i] = sum /6
+}
+#victoria_avg
+
+
+# producing the average housing prise each month in the lower mainland
+lower_avg = matrix(data = rep(NA), nrow = 13, ncol = 1)
+for (i in 1:13 ){
+  sum = 0
+  for (j in 2:7){
+    sum = sum + lowermainland[i,j] 
+  }
+  lower_avg[i] = sum /6
+}
+#lower_avg
+
+# producing the average housing prise each month in the greater mainland
+great_avg = matrix(data = rep(NA), nrow = 13, ncol = 1)
+for (i in 1:13 ){
+  sum = 0
+  for (j in 2:7){
+    sum = sum + greatvancouver[i,j] 
+  }
+  great_avg[i] = sum /6
+}
+#great_avg
+
+# producing the average housing prise each month in the fraser vally
+fraser_avg = matrix(data = rep(NA), nrow = 13, ncol = 1)
+for (i in 1:13 ){
+  sum = 0
+  for (j in 2:7){
+    sum = sum + fraservalley[i,j] 
+  }
+  fraser_avg[i] = sum /6
+}
+#fraser_avg
+
+# producing the average housing prise each month in the chilliwack
+chilliwack_avg = matrix(data = rep(NA), nrow = 13, ncol = 1)
+for (i in 1:13 ){
+  sum = 0
+  for (j in 2:7){
+    sum = sum + chilliwack[i,j] 
+  }
+  chilliwack_avg[i] = sum /6
+}
+#chilliwack_avg
+
+
+
+# producing the average housing prise each month in the okanagan
+okan_avg = matrix(data = rep(NA), nrow = 13, ncol = 1)
+for (i in 1:13 ){
+  sum = 0
+  for (j in 2:7){
+    sum = sum + okangan[i,j] 
+  }
+  okan_avg[i] = sum /6
+}
+#okan_avg
+
+
+plot(c(1:13), as.numeric(unlist(okan_avg)), type ="l",  
+     col = unique(types_avg)[7],
+     main = "The average housing price in different area ",
+     xlab = "Month (From 2020Feb to 2021Feb)",
+     ylab = "Hosuing price",
+     ylim = c(180,300))
+lines(c(1:13), as.numeric(unlist(island_avg)),col = unique(types_avg)[1])
+lines(c(1:13), as.numeric(unlist(victoria_avg)),col = unique(types_avg)[2])
+lines(c(1:13), as.numeric(unlist(lower_avg)),col = unique(types_avg)[3])
+lines(c(1:13), as.numeric(unlist(great_avg)),col = unique(types_avg)[4])
+lines(c(1:13), as.numeric(unlist(fraser_avg)),col = unique(types_avg)[5])
+lines(c(1:13), as.numeric(unlist(chilliwack_avg)),col = unique(types_avg)[6])
+legend("topleft", fill = unique(types_avg),
+       legend = c(levels(types_avg)),
+       cex=0.5)
+
+
+```
+
+
+
+
+
+
+
